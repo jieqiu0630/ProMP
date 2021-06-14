@@ -76,7 +76,7 @@ class GaussianMLPPolicy(Policy):
 
             # save the policy's trainable variables in dicts
             current_scope = tf.get_default_graph().get_name_scope()
-            trainable_policy_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=current_scope)
+            trainable_policy_vars = tf.get_collection(tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, scope=current_scope)
             self.policy_params = OrderedDict([(remove_scope_from_name(var.name, current_scope), var) for var in trainable_policy_vars])
 
     def get_action(self, observation):

@@ -122,6 +122,8 @@ class MetaGaussianMLPPolicy(GaussianMLPPolicy, MetaPolicy):
 
         """
         batch_size = observations[0].shape[0]
+        for i in range(len(observations)):
+            observations[i] = observations[i].reshape((batch_size, observations[i].size//batch_size))
         assert all([obs.shape[0] == batch_size for obs in observations])
         assert len(observations) == self.meta_batch_size
         obs_stack = np.concatenate(observations, axis=0)
@@ -131,7 +133,7 @@ class MetaGaussianMLPPolicy(GaussianMLPPolicy, MetaPolicy):
         actions, means, log_stds = sess.run([self.pre_update_action_var,
                                              self.pre_update_mean_var,
                                              self.pre_update_log_std_var],
-                                            feed_dict=feed_dict)
+                                             feed_dict=feed_dict)
         log_stds = np.concatenate(log_stds) # Get rid of fake batch size dimension (would be better to do this in tf, if we can match batch sizes)
         agent_infos = [[dict(mean=mean, log_std=log_stds[idx]) for mean in means[idx]] for idx in range(self.meta_batch_size)]
         return actions, agent_infos

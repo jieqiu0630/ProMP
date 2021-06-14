@@ -1,0 +1,18 @@
+Sat May 29 21:03:00 2021
+ERROR: Expired activation key
+
+Sat May 29 21:04:35 2021
+ERROR: Expired activation key
+
+Sat May 29 21:08:04 2021
+ERROR: Expired activation key
+
+Sat May 29 21:16:26 2021
+ERROR: Expired activation key
+
+Mon Jun  7 21:24:43 2021
+ERROR: Expired activation key
+
+Mon Jun  7 21:35:43 2021
+ERROR: Invalid activation key
+

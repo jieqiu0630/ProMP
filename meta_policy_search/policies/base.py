@@ -268,7 +268,7 @@ class MetaPolicy(Policy):
         self.policies_params_vals = updated_policies_parameters
         self._pre_update_mode = False
 
-    def _create_placeholders_for_vars(self, scope, graph_keys=tf.GraphKeys.TRAINABLE_VARIABLES):
+    def _create_placeholders_for_vars(self, scope, graph_keys=tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES):
         var_list = tf.get_collection(graph_keys, scope=scope)
         placeholders = []
         for var in var_list:

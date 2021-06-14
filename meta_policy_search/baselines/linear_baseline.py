@@ -62,7 +62,7 @@ class LinearBaseline(Baseline):
 
         """
         assert all([target_key in path.keys() for path in paths])
-
+        print([self._features(path) for path in paths]) 
         featmat = np.concatenate([self._features(path) for path in paths], axis=0)
         target = np.concatenate([path[target_key] for path in paths], axis=0)
         reg_coeff = self._reg_coeff
@@ -102,6 +102,7 @@ class LinearFeatureBaseline(LinearBaseline):
         obs = np.clip(path["observations"], -10, 10)
         path_length = len(path["observations"])
         time_step = np.arange(path_length).reshape(-1, 1) / 100.0
+        obs = obs.reshape(obs.shape[0], obs.size//obs.shape[0])
         return np.concatenate([obs, obs ** 2, time_step, time_step ** 2, time_step ** 3, np.ones((path_length, 1))],
                               axis=1)
 

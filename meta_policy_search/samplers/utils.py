@@ -56,7 +56,6 @@ def rollout(env, agent, max_path_length=np.inf, animated=False, speedup=1, save_
             else:
                 clip.write_videofile(video_filename, fps=fps)
         #return
-
     return dict(
         observations=observations,
         actons=actions,
