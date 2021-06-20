@@ -8,6 +8,8 @@ from meta_policy_search.samplers.meta_sample_processor import MetaSampleProcesso
 from meta_policy_search.policies.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
 from meta_policy_search.utils import logger
 from meta_policy_search.utils.utils import set_seed, ClassEncoder
+from meta_policy_search.policies.conv import MAMLGaussianMLPPolicy
+
 
 import numpy as np
 import tensorflow as tf

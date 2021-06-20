@@ -122,6 +122,7 @@ class MAMLAlgo(MetaAlgo):
             and for convenience, a list containing all placeholders created
         """
         obs_phs, action_phs, adv_phs, dist_info_phs, dist_info_phs_list = [], [], [], [], []
+        print("DISTRIBUTION", self.policy.distribution)
         dist_info_specs = self.policy.distribution.dist_info_specs
 
         all_phs_dict = OrderedDict()
@@ -208,7 +209,7 @@ class MAMLAlgo(MetaAlgo):
 
         # gradient descent
         adapted_policy_params = [params_var[key] - tf.multiply(self.step_sizes[key], gradients[key])
-                          for key in update_param_keys]
+                          if gradients[key] is not None else params_var[key] for key in update_param_keys]
 
         adapted_policy_params_dict = OrderedDict(zip(update_param_keys, adapted_policy_params))
 
